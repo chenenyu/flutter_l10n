@@ -1,5 +1,7 @@
 # flutter_l10n
 
+![Pub](https://img.shields.io/pub/v/flutter_l10n?style=for-the-badge)
+
 Flutter localizations.
 
 ## Getting Started

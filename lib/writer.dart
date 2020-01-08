@@ -24,19 +24,15 @@ void writeClasses(Directory outputDir, Map<File, Map<String, dynamic>> all) {
     all.forEach((k, v) {
       String filename = basenameWithoutExtension(k.path);
       String locale = filename;
-      if (v.containsKey('@@locale')) {
-        locale = v['@@locale'];
-      }
-      if (locale != 'default') {
-        locales[locale] = k;
-      }
-      if (defaultLocaleArb == null && locale == 'default') {
+      if (defaultLocaleArb == null && v['@@locale'] == 'default') {
         defaultLocaleArb = k;
+      } else {
+        locales[locale] = k;
       }
     });
   }
   if (defaultLocaleArb == null) {
-    defaultLocaleArb = all.keys.first;
+    defaultLocaleArb = locales.remove(locales.keys.first);
     if (Platform.localeName.startsWith('zh')) {
       log.warning("自动选择[${basename(defaultLocaleArb.path)}]作为默认locale。"
           "你也可以在某个arb文件中通过{\"@@locale\": \"default\"}来指定。");
@@ -60,10 +56,10 @@ void writeClasses(Directory outputDir, Map<File, Map<String, dynamic>> all) {
   _writeln("import 'package:flutter/foundation.dart';");
   _writeln("import 'package:flutter/widgets.dart';");
   _writeln("");
+  _writePart(defaultLocaleArb);
   locales.forEach((k, v) {
     log.info("Find [locale: ${k.padRight(7)}, arb: ${v.path}]");
-    String filename = basenameWithoutExtension(v.path);
-    _writeln("part '$filename.dart';");
+    _writePart(v);
   });
   _writeln("");
 
@@ -214,4 +210,9 @@ void _write(String content, {int depth = 0}) {
     }
   }
   _sb.write(content);
+}
+
+void _writePart(File file) {
+  String filename = basenameWithoutExtension(file.path);
+  _writeln("part '$filename.dart';");
 }

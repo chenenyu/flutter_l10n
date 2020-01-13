@@ -171,7 +171,7 @@ final _paramRegExp =
 void _writeString(String key, String value, bool override) {
   // search parameters
   final paramMatchers = _paramRegExp.allMatches(value);
-  final string = "'''${value.replaceAll('\$\$', '\\\$')}'''";
+  final string = "'''$value'''";
 
   if (paramMatchers.isNotEmpty) {
     final args = <String>[];

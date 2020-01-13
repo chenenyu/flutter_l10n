@@ -166,7 +166,7 @@ void _writeStrings(Map<String, dynamic> map, bool override) {
 
 // with dollar and graph (?<!\$)(?<d>\$\w+)|(?<!\$)(?<g>\$\{\w+\})
 final _paramRegExp =
-    RegExp(r'(?:(?<!\$\$)(?<=\$)(?<d>\w+))|(?:(?<!\$\$\{)(?<=\$\{)(?<g>\w+)(?=\}))');
+    RegExp(r'(?:(?<!\\\$)(?<=\$)(?<d>\w+))|(?:(?<!\\\$\{)(?<=\$\{)(?<g>\w+)(?=\}))');
 
 void _writeString(String key, String value, bool override) {
   // search parameters

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:args/args.dart';
+import 'package:flutter_l10n/ArbFile.dart';
 import 'package:flutter_l10n/log.dart';
 import 'package:flutter_l10n/reader.dart';
 import 'package:flutter_l10n/writer.dart';
@@ -30,8 +31,7 @@ main(List<String> args) {
     throw FileSystemException('Directory not exists', inputDir.path);
   }
 
-  List<FileSystemEntity> arbFiles =
-      inputDir.listSync(recursive: true).where((f) {
+  List<FileSystemEntity> arbFiles = inputDir.listSync(recursive: true).where((f) {
     return FileSystemEntity.isFileSync(f.path) && f.path.endsWith('.arb');
   }).toList();
   if (arbFiles.isEmpty) {
@@ -39,12 +39,12 @@ main(List<String> args) {
     exit(0);
   }
 
-  Map<File, Map<String, dynamic>> all = {};
+  final all = <ArbFile>[];
   arbFiles.forEach((arb) {
     if (arb is File) {
       Map<String, dynamic> arbMap = parseArb(arb);
       if (arbMap != null) {
-        all[arb] = arbMap;
+        all.add(ArbFile(arb, arbMap));
       }
     }
   });

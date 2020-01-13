@@ -137,18 +137,15 @@ void writeClasses(Directory outputDir, List<ArbFile> all) {
     _writeln("class \$${f.locale} extends S {");
     _writeln("const \$${f.locale}();", depth: 1);
     _writeln("");
-    if (_rtlLanguages.contains(k)) {
-      _writeln("TextDirection get textDirection => TextDirection.rtl;",
-          depth: 1, override: true);
+    if (_rtlLanguages.contains(f.locale)) {
+      _writeln("TextDirection get textDirection => TextDirection.rtl;", depth: 1, override: true);
     } else {
-      _writeln("TextDirection get textDirection => TextDirection.ltr;",
-          depth: 1, override: true);
+      _writeln("TextDirection get textDirection => TextDirection.ltr;", depth: 1, override: true);
     }
     _writeStrings(f.strings, true);
     _writeln("}");
 
-    File locale =
-        File(join(outputDir.path, basenameWithoutExtension(v.path) + '.dart'));
+    File locale = File(join(outputDir.path, f.filename + '.dart'));
     locale.writeAsStringSync(_sb.toString());
   });
   // ----- finish: locale class -----

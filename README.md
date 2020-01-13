@@ -30,5 +30,11 @@ MaterialApp(
 
 3. Reference strings by `S.of(context).***`.
 
+4. You can use string interpolation as you wrote dart code. For example:
+`S.of(context).title(value)`
+`"title": "App Number $value"`
+or
+`"title": "App ${value}N"`
+
 
 

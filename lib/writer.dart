@@ -54,9 +54,7 @@ void writeClasses(Directory outputDir, List<ArbFile> all) {
   _writeln("import 'package:flutter/foundation.dart';");
   _writeln("import 'package:flutter/widgets.dart';");
   _writeln('');
-  _writeln('// ignore_for_file: non_constant_identifier_names');
-  _writeln('// ignore_for_file: camel_case_types');
-  _writeln('// ignore_for_file: prefer_single_quotes');
+  _writeIgnoreForFile();
   _writeln("");
   arbFiles.forEach((f) {
     log.info("Find [locale: ${f.locale.padRight(7)}, arb: ${f.file.path}]");
@@ -136,6 +134,8 @@ void writeClasses(Directory outputDir, List<ArbFile> all) {
   // ----- begin: locale class -----
   arbFiles.forEach((f) {
     _sb.clear();
+    _writeIgnoreForFile();
+    _writeln('');
     _writeln("part of s;");
     _writeln("");
     _writeln(_comment);
@@ -154,6 +154,12 @@ void writeClasses(Directory outputDir, List<ArbFile> all) {
     locale.writeAsStringSync(_sb.toString());
   });
   // ----- finish: locale class -----
+}
+
+void _writeIgnoreForFile() {
+  _writeln('// ignore_for_file: non_constant_identifier_names');
+  _writeln('// ignore_for_file: camel_case_types');
+  _writeln('// ignore_for_file: prefer_single_quotes');
 }
 
 void _writeStrings(Map<String, dynamic> map, bool override) {

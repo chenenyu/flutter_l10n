@@ -88,7 +88,7 @@ void writeClasses(Directory outputDir, List<ArbFile> all) {
   _writeln("");
   _writeln("List<Locale> get supportedLocales {", depth: 1);
   _writeln("return const <Locale>[", depth: 2);
-  for (var file in arbFiles) {
+  for (var file in all) {
     _writeln("Locale('${file.locale}'),", depth: 3);
   }
   _writeln("];", depth: 2);
@@ -114,12 +114,17 @@ void writeClasses(Directory outputDir, List<ArbFile> all) {
   _writeln("bool isSupported(Locale locale) {", depth: 1, override: true);
   _writeln('if (locale != null) {', depth: 2);
   _writeln('for (Locale supportedLocale in supportedLocales) {', depth: 3);
-  _writeln('if (supportedLocale.languageCode == locale.languageCode', depth: 4);
-  _writeln('&& supportedLocale.countryCode == locale.countryCode) return true;', depth: 6);
+  _writeln('if (supportedLocale.languageCode != locale.languageCode) continue;', depth: 4);
+  _writeln('if (supportedLocale.countryCode == locale.countryCode ||', depth: 4);
+  _writeln('(supportedLocale.countryCode?.isEmpty != false &&', depth: 6);
+  _writeln('locale.countryCode?.isEmpty != false)) {', depth: 8);
+  _writeln('return true;', depth: 5);
+  _writeln('}', depth: 4);
   _writeln('}', depth: 3);
   _writeln('}', depth: 2);
   _writeln('return false;', depth: 2);
   _writeln("}", depth: 1);
+
   _writeln("");
   _writeln("bool shouldReload($delegateName old) => false;", depth: 1, override: true);
   _writeln("}");

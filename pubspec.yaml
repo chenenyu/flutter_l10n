@@ -10,5 +10,6 @@ dependencies:
   dart_style: ^2.2.3
   file: ">=6.1.2 <8.0.0"
   intl: ^0.18.0
+  meta: ">=1.9.0 <3.0.0"
   path: ^1.8.0
   yaml: ^3.0.0

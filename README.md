@@ -6,6 +6,8 @@ A dart library that generates Flutter localization code from ARB file.
 
 This library is an extension of official Flutter localizations. You can refer to [👉here👈](https://docs.flutter.dev/ui/accessibility-and-localization/internationalization#configuring-the-l10nyaml-file) to config the `flutter_l10n.yaml`.
 
+[Online demo](https://chenenyu.github.io/flutter_l10n/)
+
 ## Features
 
 - Compatible with official APIs.
@@ -20,8 +22,7 @@ This library is an extension of official Flutter localizations. You can refer to
 
 ### Usage
 
-1. Generate `S.dart` file from `*.arb` files in your project directory.
-`flutter_l10n generate`.
+1. Generate `S.dart` file from `*.arb` files in your project directory: `flutter_l10n generate`.
 
 2. Register in `MaterialApp`/`WidgetsApp`:
 ```dart

@@ -1,0 +1,28 @@
+name: flutter_l10n_example
+description: An example project for flutter_l10n.
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: any
+
+  submodule:
+    path: ./submodule
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+  flutter_l10n:
+    path: ../
+
+flutter:
+  uses-material-design: true

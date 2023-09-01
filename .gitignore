@@ -9,8 +9,6 @@
 .history
 .svn/
 
-example/
-
 # IntelliJ related
 *.iml
 *.ipr
@@ -30,6 +28,7 @@ example/
 .pub-cache/
 .pub/
 build/
+pubspec.lock
 
 # Android related
 **/android/**/gradle-wrapper.jar

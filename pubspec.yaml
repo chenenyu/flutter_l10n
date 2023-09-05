@@ -1,10 +1,19 @@
 name: flutter_l10n
 description: A dart library that generates Flutter localization code from ARB file.
-version: 1.0.0
 homepage: https://github.com/chenenyu/flutter_l10n
+version: 1.0.1
+topics:
+  - localization
+  - internationalization
+  - l10n
+  - i18n
+  - arb
 
 environment:
   sdk: ">=2.17.0 <4.0.0"
+
+executables:
+  flutterl10n: generate
 
 dependencies:
   dart_style: ^2.2.3
@@ -13,3 +22,12 @@ dependencies:
   meta: ">=1.9.0 <3.0.0"
   path: ^1.8.0
   yaml: ^3.0.0
+
+# This package supports all platforms listed below.
+platforms:
+  android:
+  ios:
+  linux:
+  macos:
+  windows:
+  web:

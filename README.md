@@ -1,6 +1,6 @@
 # flutter_l10n
 
-![Pub Version (including pre-releases)](https://img.shields.io/pub/v/flutter_l10n)
+[![Pub Version (including pre-releases)](https://img.shields.io/pub/v/flutter_l10n)](https://pub.dev/packages/flutter_l10n)
 
 A dart library that generates Flutter localization code from ARB file.
 
@@ -22,7 +22,7 @@ This library is an extension of official Flutter localizations. You can refer to
 
 ### Usage
 
-1. Generate `S.dart` file from `*.arb` files in your project directory: `flutter_l10n generate`.
+1. Generate `S.dart` file from `*.arb` files in your project directory by running: `flutterl10n`.
 
 2. Register in `MaterialApp`/`WidgetsApp`:
 ```dart

@@ -88,7 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
     if (r == true) {
       print('changed to ${_locale?.toString()}');
       setState(() {}); // first trigger S.delegate.load(_locale)
-      WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      Future.delayed(const Duration(seconds: 1), () {
         setState(() {}); // then trigger rebuild to update S.current
       });
     }
@@ -116,8 +116,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   subtitle: Text(SubS.current.helloWorld),
                 ),
                 ListTile(
-                  title: const Text("S.current.hello('Flutter')"),
-                  subtitle: Text(S.current.hello('Flutter')),
+                  title: const Text("S.current.hello('Flutter', 'Dart')"),
+                  subtitle: Text(S.current.hello('Flutter', 'Dart')),
+                ),
+                ListTile(
+                  title: const Text("S.current.helloWithAttrs('Flutter', 'Dart')"),
+                  subtitle: Text(S.current.helloWithAttrs('Flutter', 'Dart')),
                 ),
                 ListTile(
                   title: const Text("S.current.nPandas(0)"),

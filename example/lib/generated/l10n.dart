@@ -94,11 +94,17 @@ abstract class S {
   /// **'Hello World!'**
   String get helloWorld;
 
-  /// A message with a single parameter
+  /// No description provided for @hello.
   ///
   /// In en, this message translates to:
-  /// **'Hello {userName}'**
-  String hello(String userName);
+  /// **'Hello {yourName}, i\'m {myName}'**
+  String hello(Object yourName, Object myName);
+
+  /// Message with attributes
+  ///
+  /// In en, this message translates to:
+  /// **'Hello {yourName}，i\'m {myName}'**
+  String helloWithAttrs(String myName, String yourName);
 
   /// A plural message
   ///

@@ -1,13 +1,16 @@
 {
   "@@locale": "zh",
   "helloWorld": "你好，世界!",
-  "hello": "你好 {userName}",
-  "@hello": {
-    "description": "带有一个参数的消息",
+  "hello": "你好{yourName}，我是{myName}",
+  "helloWithAttrs": "你好{yourName}，我是{myName}",
+  "@helloWithAttrs": {
+    "description": "带属性的消息",
     "placeholders": {
-      "userName": {
-        "type": "String",
-        "example": "老王"
+      "myName": {
+        "type": "String"
+      },
+      "yourName": {
+        "type": "String"
       }
     }
   },

@@ -10,8 +10,13 @@ class SEn extends S {
   String get helloWorld => 'Hello World!';
 
   @override
-  String hello(String userName) {
-    return 'Hello $userName';
+  String hello(Object yourName, Object myName) {
+    return 'Hello $yourName, i\'m $myName';
+  }
+
+  @override
+  String helloWithAttrs(String myName, String yourName) {
+    return 'Hello $yourName，i\'m $myName';
   }
 
   @override

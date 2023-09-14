@@ -3,13 +3,16 @@
   "@helloWorld": {
     "description": "The conventional newborn programmer greeting"
   },
-  "hello": "Hello {userName}",
-  "@hello": {
-    "description": "A message with a single parameter",
+  "hello": "Hello {yourName}, i'm {myName}",
+  "helloWithAttrs": "Hello {yourName}，i'm {myName}",
+  "@helloWithAttrs": {
+    "description": "Message with attributes",
     "placeholders": {
-      "userName": {
-        "type": "String",
-        "example": "Bob"
+      "myName": {
+        "type": "String"
+      },
+      "yourName": {
+        "type": "String"
       }
     }
   },

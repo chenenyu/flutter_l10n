@@ -4,6 +4,7 @@ import 'package:file/local.dart';
 import 'package:flutter_l10n/src/gen_l10n.dart';
 import 'package:flutter_l10n/src/localizations_utils.dart';
 import 'package:flutter_l10n/src/utils.dart';
+import 'package:path/path.dart';
 
 Future<void> main(List<String> args) async {
   const FileSystem fs = LocalFileSystem();
@@ -19,11 +20,13 @@ Future<void> main(List<String> args) async {
 
   late LocalizationOptions options;
 
+  String defaultArbDir = join('lib', 'l10n');
   File? l10nFile = getL10nYamlFile(fs);
   if (l10nFile == null) {
-    options = LocalizationOptions();
+    options = LocalizationOptions(arbDir: defaultArbDir);
   } else {
-    options = parseLocalizationsOptions(file: l10nFile);
+    options = parseLocalizationsOptionsFromYAML(
+        file: l10nFile, defaultArbDir: defaultArbDir);
   }
 
   LocalizationsGenerator generator = generateLocalizations(

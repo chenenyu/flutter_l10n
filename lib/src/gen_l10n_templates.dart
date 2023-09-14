@@ -152,6 +152,9 @@ const String selectVariableTemplate = '''
       },
     );''';
 
+const String dateVariableTemplate = '''
+    String @(varName) = intl.DateFormat.@(formatType)(localeName).format(@(argument));''';
+
 const String classFileTemplate = '''
 @(header)@(requiresIntlImport)import '@(fileName)';
 
@@ -207,11 +210,9 @@ class _@(class)Delegate extends LocalizationsDelegate<@(class)> {
 
 @(lookupFunction)''';
 
-const String loadBodyTemplate =
-    '''return SynchronousFuture<@(class)>(@(lookupName)(locale));''';
+const String loadBodyTemplate = '''return SynchronousFuture<@(class)>(@(lookupName)(locale));''';
 
-const String loadBodyDeferredLoadingTemplate =
-    '''return @(lookupName)(locale);''';
+const String loadBodyDeferredLoadingTemplate = '''return @(lookupName)(locale);''';
 
 // DELEGATE LOOKUP TEMPLATES
 

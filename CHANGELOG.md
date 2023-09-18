@@ -1,7 +1,11 @@
+## [1.1.1] - 2023/09/18.
+
+* Rollback 7f8e00bd.
+
 ## [1.1.0] - 2023/09/14.
 
 * Sync with flutter `3.13.4`.
-* Ensure that the order of method parameters is consistent with arb.
+* ~~Ensure that the order of method parameters is consistent with arb.~~
 
 ## [1.0.1] - 2023/09/05.
 

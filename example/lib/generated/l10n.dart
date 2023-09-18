@@ -98,7 +98,7 @@ abstract class S {
   ///
   /// In en, this message translates to:
   /// **'Hello {yourName}, i\'m {myName}'**
-  String hello(Object yourName, Object myName);
+  String hello(Object myName, Object yourName);
 
   /// Message with attributes
   ///

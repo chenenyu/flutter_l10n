@@ -486,7 +486,7 @@ class Message {
       }
       final List<Node> traversalStack = <Node>[parsedMessages[locale]!];
       while (traversalStack.isNotEmpty) {
-        final Node node = traversalStack.removeAt(0);
+        final Node node = traversalStack.removeLast();
         if (<ST>[
           ST.placeholderExpr,
           ST.pluralExpr,
@@ -516,7 +516,11 @@ class Message {
         traversalStack.addAll(node.children);
       }
     }
-    placeholders.addAll(undeclaredPlaceholders);
+    placeholders.addEntries(
+        undeclaredPlaceholders.entries
+            .toList()
+          ..sort((MapEntry<String, Placeholder> p1, MapEntry<String, Placeholder> p2) => p1.key.compareTo(p2.key))
+    );
 
     bool atMostOneOf(bool x, bool y, bool z) {
       return x && !y && !z

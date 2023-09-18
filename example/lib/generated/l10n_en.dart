@@ -10,7 +10,7 @@ class SEn extends S {
   String get helloWorld => 'Hello World!';
 
   @override
-  String hello(Object yourName, Object myName) {
+  String hello(Object myName, Object yourName) {
     return 'Hello $yourName, i\'m $myName';
   }
 

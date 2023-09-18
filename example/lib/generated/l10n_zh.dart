@@ -10,7 +10,7 @@ class SZh extends S {
   String get helloWorld => '你好，世界!';
 
   @override
-  String hello(Object yourName, Object myName) {
+  String hello(Object myName, Object yourName) {
     return '你好$yourName，我是$myName';
   }
 

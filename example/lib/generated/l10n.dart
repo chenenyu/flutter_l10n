@@ -1,10 +1,11 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart' as intl;
 
-import 'l10n_en.dart' deferred as l10n_en;
-import 'l10n_zh.dart' deferred as l10n_zh;
+import 'l10n_en.dart';
+import 'l10n_zh.dart';
 
 /// Callers can lookup localized strings with an instance of S
 /// returned by `S.of(context)`.
@@ -85,7 +86,8 @@ abstract class S {
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
     Locale('en'),
-    Locale('zh')
+    Locale('zh'),
+    Locale('zh', 'TW')
   ];
 
   /// The conventional newborn programmer greeting
@@ -130,7 +132,7 @@ class _SDelegate extends LocalizationsDelegate<S> {
 
   @override
   Future<S> load(Locale locale) {
-    return lookupS(locale);
+    return SynchronousFuture<S>(lookupS(locale));
   }
 
   @override
@@ -141,19 +143,28 @@ class _SDelegate extends LocalizationsDelegate<S> {
   bool shouldReload(_SDelegate old) => false;
 }
 
-Future<S> lookupS(Locale locale) {
+S lookupS(Locale locale) {
+  // Lookup logic when language+country codes are specified.
+  switch (locale.languageCode) {
+    case 'zh':
+      {
+        switch (locale.countryCode) {
+          case 'TW':
+            S._current = SZhTw();
+            return S._current!;
+        }
+        break;
+      }
+  }
+
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
     case 'en':
-      return l10n_en.loadLibrary().then((dynamic _) {
-        S._current = l10n_en.SEn();
-        return S.current;
-      });
+      S._current = SEn();
+      return S._current!;
     case 'zh':
-      return l10n_zh.loadLibrary().then((dynamic _) {
-        S._current = l10n_zh.SZh();
-        return S.current;
-      });
+      S._current = SZh();
+      return S._current!;
   }
 
   throw FlutterError(

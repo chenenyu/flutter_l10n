@@ -6,4 +6,4 @@ output-localization-file: l10n.dart
 output-class: S
 use-escaping: false
 format: true
-use-deferred-loading: true # for web
+use-deferred-loading: false # for web

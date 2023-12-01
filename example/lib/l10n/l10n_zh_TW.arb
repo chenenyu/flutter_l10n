@@ -1,0 +1,46 @@
+{
+  "@@locale": "zh_TW",
+  "helloWorld": "你好，世界!",
+  "hello": "你好{yourName}，我是{myName}",
+  "helloWithAttrs": "你好{yourName}，我是{myName}",
+  "@helloWithAttrs": {
+    "description": "带属性的消息",
+    "placeholders": {
+      "myName": {
+        "type": "String"
+      },
+      "yourName": {
+        "type": "String"
+      }
+    }
+  },
+  "nPandas": "{count, plural, =0{沒有熊貓} =1{一隻熊貓} other{{count}隻熊貓}}",
+  "@nPandas": {
+    "description": "复数消息",
+    "placeholders": {
+      "count": {
+        "type": "num",
+        "format": "compact"
+      }
+    }
+  },
+  "pronoun": "{gender, select, male{他} female{她} other{他們}}",
+  "@pronoun": {
+    "description": "性别消息",
+    "placeholders": {
+      "gender": {
+        "type": "String"
+      }
+    }
+  },
+  "numberOfDataPoints": "數值: {value}",
+  "@numberOfDataPoints": {
+    "description": "可格式化int参数的消息",
+    "placeholders": {
+      "value": {
+        "type": "int",
+        "format": "compact"
+      }
+    }
+  }
+}

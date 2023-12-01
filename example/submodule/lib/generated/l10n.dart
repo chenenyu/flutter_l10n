@@ -85,7 +85,8 @@ abstract class SubS {
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
     Locale('en'),
-    Locale('zh')
+    Locale('zh'),
+    Locale('zh', 'TW')
   ];
 
   /// No description provided for @helloWorld.
@@ -112,6 +113,21 @@ class _SubSDelegate extends LocalizationsDelegate<SubS> {
 }
 
 Future<SubS> lookupSubS(Locale locale) {
+  // Lookup logic when language+country codes are specified.
+  switch (locale.languageCode) {
+    case 'zh':
+      {
+        switch (locale.countryCode) {
+          case 'TW':
+            return l10n_zh.loadLibrary().then((dynamic _) {
+              SubS._current = l10n_zh.SubSZhTw();
+              return SubS.current;
+            });
+        }
+        break;
+      }
+  }
+
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
     case 'en':

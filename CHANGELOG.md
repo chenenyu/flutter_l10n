@@ -1,3 +1,7 @@
+## [1.1.2] - 2023/12/01.
+
+* Fix locale with countryCode.
+
 ## [1.1.1] - 2023/09/18.
 
 * Rollback 7f8e00bd.

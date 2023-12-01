@@ -218,15 +218,8 @@ const String loadBodyDeferredLoadingTemplate = '''return @(lookupName)(locale);'
 
 const String lookupFunctionTemplate = r'''
 @(class) @(lookupName)(Locale locale) {
-  @(class)? s;
-
   @(lookupBody)
   
-  if (s != null) {
-    @(class)._current = s;
-    return s;
-  }
-
   throw FlutterError(
     '@(class).delegate failed to load unsupported locale "$locale". This is likely '
     'an issue with the localizations generation tool. Please file an issue '
@@ -254,8 +247,8 @@ const String lookupBodyTemplate = '''
 @(lookupLanguageCodeSpecified)''';
 
 const String switchClauseTemplate = '''case '@(case)': 
-    s = @(localeClass)();
-    break;''';
+    @(class)._current = @(localeClass)();
+    return @(class)._current!;''';
 
 const String switchClauseDeferredLoadingTemplate = '''case '@(case)':
     return @(library).loadLibrary().then((dynamic _) {
